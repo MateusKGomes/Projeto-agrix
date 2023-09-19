@@ -8,6 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,6 +32,12 @@ public class Crops {
 
   @JoinColumn(name = "planted_area")
   private Double plantedArea;
+
+  @JoinColumn(name = "planted_date")
+  private LocalDate plantedDate;
+
+  @JoinColumn(name = "harvest_date")
+  private LocalDate harvestDate;
 
   @Column(name = "farm_id", updatable = false, insertable = false)
   private Long farmId;
