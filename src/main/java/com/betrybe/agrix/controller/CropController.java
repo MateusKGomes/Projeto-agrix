@@ -4,13 +4,17 @@ import com.betrybe.agrix.controller.dto.CropsDto;
 import com.betrybe.agrix.entity.Crops;
 import com.betrybe.agrix.service.CropService;
 import com.betrybe.agrix.service.exception.CropsNotFoundException;
+import com.betrybe.agrix.service.exception.FertilizerNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -75,6 +79,21 @@ public class CropController {
         .map(CropsDto::fromEntity)
         .collect(Collectors.toList());
 
+  }
+
+  /**
+   * associateCropsAndFertilizer.
+   */
+  @PostMapping("/{cropId}/fertilizers/{fertilizerId}")
+  @ResponseStatus(HttpStatus.CREATED)
+  public ResponseEntity<String> associateCropsAndFertilizer(
+      @PathVariable("cropId") Long cropsId,
+      @PathVariable("fertilizerId") Long fertilizerId
+  ) throws CropsNotFoundException, FertilizerNotFoundException {
+
+    cropService.associateCropsAndFertilizer(cropsId, fertilizerId);
+    return ResponseEntity.status(HttpStatus.CREATED)
+        .body("Fertilizante e plantação associados com sucesso!");
   }
 
 }
