@@ -2,6 +2,7 @@ package com.betrybe.agrix.service;
 
 import com.betrybe.agrix.entity.Fertilizer;
 import com.betrybe.agrix.repository.FertilizerRepository;
+import com.betrybe.agrix.service.exception.FertilizerNotFoundException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,15 @@ public class FertilizerService {
    */
   public List<Fertilizer> getAllFertilizers() {
     return fertilizerRepository.findAll();
+  }
+
+  /**
+   * FindFertilizerById.
+   */
+  public Fertilizer findFertilizerById(Long id) throws FertilizerNotFoundException {
+    return fertilizerRepository
+        .findById(id)
+        .orElseThrow(FertilizerNotFoundException::new);
   }
 
 }
