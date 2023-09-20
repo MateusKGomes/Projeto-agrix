@@ -41,7 +41,7 @@ public class CropController {
   public List<CropsDto> findAllCrops() {
     List<Crops> crops = cropService.findAllCrops();
 
-    return  crops.stream()
+    return crops.stream()
         .map(CropsDto::fromEntity)
         .collect(Collectors.toList());
 
@@ -68,7 +68,6 @@ public class CropController {
       @RequestParam LocalDate start, @RequestParam LocalDate end) {
 
     List<Crops> crops = cropService.findAllCrops();
-
 
     return crops.stream()
         .filter(

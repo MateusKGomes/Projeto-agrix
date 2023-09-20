@@ -34,12 +34,7 @@ public class Fertilizer {
 
   private String composition;
 
-  @ManyToMany
-  @JoinTable(
-      name = "crop_fertilizer",
-      joinColumns = @JoinColumn(name = "crop_id"),
-      inverseJoinColumns = @JoinColumn(name = "fertilizer_id")
-  )
+  @ManyToMany(mappedBy = "fertilizer")
   @JsonIgnore
   private List<Crops> crops;
 

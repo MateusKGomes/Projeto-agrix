@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -48,8 +49,15 @@ public class Crops {
   @JoinColumn(name = "farm_id")
   private Farm farm;
 
-  @ManyToMany(mappedBy = "crops")
+  @ManyToMany
+  @JoinTable(
+      name = "crop_fertilizer",
+      joinColumns = @JoinColumn(name = "crop_id"),
+      inverseJoinColumns = @JoinColumn(name = "fertilizer_id")
+  )
   private List<Fertilizer> fertilizer;
+
+
 
 
 }
