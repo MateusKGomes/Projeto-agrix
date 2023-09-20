@@ -1,7 +1,9 @@
 package com.betrybe.agrix.controller;
 
 import com.betrybe.agrix.controller.dto.CropsDto;
+import com.betrybe.agrix.controller.dto.FertilizerDto;
 import com.betrybe.agrix.entity.Crops;
+import com.betrybe.agrix.entity.Fertilizer;
 import com.betrybe.agrix.service.CropService;
 import com.betrybe.agrix.service.exception.CropsNotFoundException;
 import com.betrybe.agrix.service.exception.FertilizerNotFoundException;
@@ -94,6 +96,23 @@ public class CropController {
     cropService.associateCropsAndFertilizer(cropsId, fertilizerId);
     return ResponseEntity.status(HttpStatus.CREATED)
         .body("Fertilizante e plantação associados com sucesso!");
+  }
+
+  /**
+   * getFertilizersInCrop.
+   */
+  @GetMapping("/{cropId}/fertilizers")
+  @ResponseStatus(HttpStatus.OK)
+  public List<FertilizerDto> getFertilizersInCrop(@PathVariable("cropId") Long id)
+      throws CropsNotFoundException {
+    Crops crops = cropService.findCropsById(id);
+
+    List<Fertilizer> fertilizers = crops.getFertilizer();
+
+    return fertilizers.stream()
+        .map(FertilizerDto::fromEntity)
+        .collect(Collectors.toList());
+
   }
 
 }
