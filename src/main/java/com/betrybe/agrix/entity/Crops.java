@@ -6,10 +6,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -45,5 +47,9 @@ public class Crops {
   @ManyToOne
   @JoinColumn(name = "farm_id")
   private Farm farm;
+
+  @ManyToMany(mappedBy = "crops")
+  private List<Fertilizer> fertilizer;
+
 
 }
