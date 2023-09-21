@@ -1,10 +1,6 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+Nesse projeto pude:
+Aplicar o conhecimento do ecossistema Spring para criar rotas da API.
+Aplicar a injeção de dependência para conectar as camadas de controle, serviço e persistência.
+Utilizar o Spring Data JPA para implementar entidades e repositórios para a persistência em banco de dados, bem como implementar buscas customizadas.
+Utilizar campos de data nas rotas da API e no banco de dados
+Criar testes unitários para garantir a qualidade e funcionamento correto da implementação, com cobertura de código adequada.
